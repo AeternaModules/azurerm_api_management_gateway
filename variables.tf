@@ -24,15 +24,6 @@ EOT
       region   = optional(string)
     })
   }))
-  # --- Unconfirmed validation candidates, derived from azurerm_api_management_gateway's provider source ---
-  # Not auto-enabled: either a bespoke provider validator we can't safely translate,
-  # or a path that crosses a list-typed block (needs its own for_each wrapping).
-  # Review, translate into a real validation{} block above, and delete once confirmed.
-  # path: name
-  #   source:    [from validate.ApiManagementChildName] !matched
-  # path: api_management_id
-  #   source:    [from apimanagementservice.ValidateServiceID] !ok
-  # path: api_management_id
-  #   source:    [from apimanagementservice.ValidateServiceID] err != nil
+  # Note: 3 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
