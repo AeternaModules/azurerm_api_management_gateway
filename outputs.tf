@@ -12,7 +12,7 @@ output "api_management_gateways_description" {
 }
 output "api_management_gateways_location_data" {
   description = "Map of location_data values across all api_management_gateways, keyed the same as var.api_management_gateways"
-  value       = { for k, v in azurerm_api_management_gateway.api_management_gateways : k => v.location_data if v.location_data != null && length(v.location_data) > 0 }
+  value       = { for k, v in azurerm_api_management_gateway.api_management_gateways : k => one(v.location_data) if v.location_data != null && length(v.location_data) > 0 }
 }
 output "api_management_gateways_name" {
   description = "Map of name values across all api_management_gateways, keyed the same as var.api_management_gateways"
